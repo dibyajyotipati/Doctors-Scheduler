@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+   backend:
+    build: ./Backend
+    container_name: doctor_b
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./Backend:/server
+      - /server/node_modules
+   frontend:
+    build: ./frontend
+    container_name: doctor_f
+    ports:
+      - '3000:3000'  
+    stdin_open: true
+    tty: true   
+    volumes:
+      - ./frontend:/app 
+      - /app/node_modules  
